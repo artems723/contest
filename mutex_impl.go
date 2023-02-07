@@ -7,10 +7,7 @@ type MyMutex struct {
 func New() Mutex {
 	l := make(chan struct{}, 1)
 	l <- struct{}{}
-	m := MyMutex{
-		lockChan: l,
-	}
-	return &m
+	return &MyMutex{lockChan: l}
 }
 
 func (m *MyMutex) Lock() {
